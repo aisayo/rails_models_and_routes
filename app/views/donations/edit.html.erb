@@ -1,0 +1,21 @@
+<h1>Donations#edit</h1>
+<p>Find me in app/views/donations/edit.html.erb</p>
+<h3>Form For</h3>
+
+<%= form_for(@donation) do |f| %>
+
+<%= f.label :amount %>
+<%= f.number_field :amount %>
+
+<%= f.label :date %>
+<%= f.datetime_field :date %>
+
+<%= f.label :user_id %>
+<%= f.number_field :user_id  %>
+
+<%= f.label :organization_id %>
+<%= f.number_field :organization_id %>
+
+<%= f.submit %>
+
+<% end %>

@@ -13,10 +13,12 @@
 #     {username: "e_lombardo", first_name: "eric", last_name: "l", password: "test"},
 #     ])
 
-# faker gem
+# # faker gem
 
-# 10.times do 
-#     User.create(username: Faker::Name)
-# end 
+# # 10.times do 
+# #     User.create(username: Faker::Name)
+# # end 
+
+# Organization.create([{name: "Feeding_America "}, {name: "American Cancer Society"}, {name: "The Salvation Army"}])
 
 

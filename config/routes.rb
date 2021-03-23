@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get '/most_donor', to: 'users#most_honor', as: 'rich_donor'
+
+  resources :organizations
+  resources :users
+  resources :donations
+
 
   # where our routes live
 
@@ -36,8 +42,6 @@ Rails.application.routes.draw do
 
   # delete '/users/:id', to: 'users#destroy'
 
-  resources :users
 
-  get '/most_donor', to: 'users#most_honor', as: 'rich_donor'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
