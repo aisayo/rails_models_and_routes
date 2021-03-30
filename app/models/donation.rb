@@ -1,6 +1,8 @@
 class Donation < ApplicationRecord
-  belongs_to :user
-  belongs_to :organization
+  belongs_to :user, optional: true
+  belongs_to :organization, optional: true
+
+  # validates :amount, presence: :true
 
 
   # what goes in here? 

@@ -4,7 +4,7 @@
 
 <% if @donations.length == 0 %>
      No current donations 
-    <% else %>
+<% else %>
     <% @donations.each do |d| %>
     <p>
         Amount: <%= d.amount %>
@@ -13,3 +13,5 @@
     </p>
     <% end %> 
 <% end %>
+
+<%= link_to "New Donation", new_donation_path %>
