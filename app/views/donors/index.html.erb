@@ -1,0 +1,8 @@
+<h1>Users#index</h1>
+
+<% @donors.each do |donor| %>
+<p>
+<%= link_to donor.username, donor_path(donor) %>
+</p>
+<% end %>
+

@@ -1,13 +1,15 @@
 class DonationsController < ApplicationController
-  def index # responsibility: show all donations route: '/donations' path: donations_path 
+  before_action :set_donation, except: [:index, :new, :create]
+  
+  def index 
     @donations = Donation.all
   end
 
-  def new # responsibility: render a new form route: /donations/new path: new_donation_path 
+  def new 
    @donation = Donation.new
   end
 
-  def create # responsibility: process submitted new form route: '/donations' path: donations_path(only used on server side)
+  def create 
     @donation = Donation.new(donation_params)
     if @donation.save 
       redirect_to donation_path(@donation)
@@ -16,34 +18,33 @@ class DonationsController < ApplicationController
     end 
   end 
 
-  def show # responsible: single donation route: '/donations/:id' path: donation_path(donation_id)
-    @donation = Donation.find_by_id(params[:id])
+  def show 
   end
 
   def edit
-    @donation = Donation.find_by_id(params[:id])
   end
 
   def update 
-    @donation = Donation.find_by_id(params[:id])
-    @donation.update(donation_params(:amount))
+    if @donation.update(donation_params)
+      redirect_to donation_path(@donation)
+    else 
+      render :edit
+    end 
   end 
 
   def destroy
-    byebug
-    @donation = Donation.find_by_id(params[:id])
     @donation.destroy
     redirect_to donations_path
   end 
 
   private 
 
-  def donation_params # strong params: permits fields being submitted
-    params.require(:donation).permit(:amount, :date, :user_id, :organization_id)
+  def donation_params 
+    params.require(:donation).permit(:amount, :date)
   end 
 
-  # def donation_params(*args)
-  #   params.require(:donation).permit(*args)
-  # end 
+  def set_donation
+    @donation = Donation.find_by_id(params[:id])
+  end 
 
 end
